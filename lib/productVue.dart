@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:sae_mobile/product.dart';
+import 'package:sae_mobile/favorites_screen.dart';
 
 class ProductsScreen extends StatefulWidget {
   @override
@@ -42,9 +43,24 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Products'),
+        title: Text('Produits'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FavoritesScreen(
+                    favoriteProducts: _favoriteProducts,
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
-      body: _products != null
+      body: _products.isNotEmpty
           ? ListView.builder(
         itemCount: _products.length,
         itemBuilder: (context, index) {
