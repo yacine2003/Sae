@@ -10,7 +10,8 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  late List<Product> _products;
+  List<Product> _products = [];
+  List<Product> _favoriteProducts = [];
 
   @override
   void initState() {
@@ -27,6 +28,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
+  void _toggleFavorite(Product product) {
+    setState(() {
+      if (_favoriteProducts.contains(product)) {
+        _favoriteProducts.remove(product);
+      } else {
+        _favoriteProducts.add(product);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +49,33 @@ class _ProductsScreenState extends State<ProductsScreen> {
         itemCount: _products.length,
         itemBuilder: (context, index) {
           final product = _products[index];
+          final isFavorite = _favoriteProducts.contains(product);
+
           return ListTile(
             leading: Image.network(product.image),
             title: Text(product.title),
             subtitle: Text(product.description),
-            trailing: Text('\$${product.price.toStringAsFixed(2)}'),
+            trailing: SizedBox(
+              width: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: Text(
+                      '\$${product.price.toStringAsFixed(2)}',
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : null,
+                    ),
+                    onPressed: () => _toggleFavorite(product),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       )
