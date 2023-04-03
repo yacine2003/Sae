@@ -69,7 +69,7 @@
     },
     {
       "name": "dio",
-      "rootUri": "file:///Users/yacine/IUT/S4/Dev_Appli_Mobile/flutter/.pub-cache/hosted/pub.dartlang.org/dio-5.1.0",
+      "rootUri": "file:///Users/yacine/IUT/S4/Dev_Appli_Mobile/flutter/.pub-cache/hosted/pub.dartlang.org/dio-5.1.1",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -260,7 +260,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-03-31T04:37:45.738298Z",
+  "generated": "2023-04-03T10:05:35.076380Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

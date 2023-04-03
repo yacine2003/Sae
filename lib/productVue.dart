@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:collection/collection.dart';
+
+
 
 import 'package:sae_mobile/product.dart';
 import 'package:sae_mobile/favorites_screen.dart';
+
+import 'cartItem.dart';
+import 'cartScreen.dart';
+
 
 class ProductsScreen extends StatefulWidget {
   @override
@@ -13,6 +20,7 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   List<Product> _products = [];
   List<Product> _favoriteProducts = [];
+  List<CartItem> _cartItems = [];
 
   @override
   void initState() {
@@ -39,6 +47,42 @@ class _ProductsScreenState extends State<ProductsScreen> {
     });
   }
 
+  T? firstWhereOrNull<T>(Iterable<T> iterable, bool Function(T) test) {
+    for (T element in iterable) {
+      if (test(element)) {
+        return element;
+      }
+    }
+    return null;
+  }
+
+
+  void _addToCart(Product product) {
+    setState(() {
+      CartItem? item = firstWhereOrNull(
+        _cartItems,
+            (i) => i.product.id == product.id,
+      );
+
+      if (item != null) {
+        item.quantity++;
+      } else {
+        _cartItems.add(CartItem(product: product, quantity: 1));
+      }
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +102,25 @@ class _ProductsScreenState extends State<ProductsScreen> {
               );
             },
           ),
+
+          // ...
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(cartItems: _cartItems),
+                ),
+              );
+            },
+          ),
+// ...
+
+          // ...
+
+// ...
+
         ],
       ),
       body: _products.isNotEmpty
@@ -72,7 +135,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
             title: Text(product.title),
             subtitle: Text(product.description),
             trailing: SizedBox(
-              width: 100,
+              width: 140,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -89,6 +152,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     ),
                     onPressed: () => _toggleFavorite(product),
                   ),
+                  IconButton(
+                    icon: Icon(Icons.add_shopping_cart),
+                    onPressed: () => _addToCart(product),
+                  ),
+
                 ],
               ),
             ),
