@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:collection/collection.dart';
 
 
 
@@ -73,6 +72,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
 
+  void _clearCart() {
+    setState(() {
+      _cartItems.clear();
+    });
+  }
 
 
 
@@ -104,17 +108,23 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
 
           // ...
+
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CartScreen(cartItems: _cartItems),
+                  builder: (context) => CartScreen(
+                    cartItems: _cartItems,
+                    onCartValidated: _clearCart,
+                  ),
                 ),
               );
             },
           ),
+
+
 // ...
 
           // ...

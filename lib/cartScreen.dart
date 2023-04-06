@@ -1,23 +1,46 @@
 import 'package:flutter/material.dart';
-
 import 'cartItem.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   final List<CartItem> cartItems;
+  final VoidCallback onCartValidated;
 
-  CartScreen({required this.cartItems});
+  CartScreen({required this.cartItems, required this.onCartValidated});
 
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Panier"),
+        actions: [
+          TextButton(
+            onPressed: widget.cartItems.isNotEmpty
+                ? () {
+              widget.onCartValidated();
+              Navigator.pop(context);
+            }
+                : null,
+            child: Text(
+              "Valider le panier",
+              style: TextStyle(
+                color: widget.cartItems.isNotEmpty
+                    ? Colors.white
+                    : Colors.grey,
+              ),
+            ),
+          ),
+        ],
       ),
-      body: cartItems.isNotEmpty
+      body: widget.cartItems.isNotEmpty
           ? ListView.builder(
-        itemCount: cartItems.length,
+        itemCount: widget.cartItems.length,
         itemBuilder: (context, index) {
-          final cartItem = cartItems[index];
+          final cartItem = widget.cartItems[index];
           final product = cartItem.product;
 
           return ListTile(
