@@ -1,0 +1,26 @@
+2023/04/06-19:30:45.372 8107 Creating DB /private/var/folders/5d/kwvt66_d5sz8hnqxyrhy_9z80000gn/T/flutter_tools.SnFxjL/flutter_tools_chrome_device.BXZEVp/Default/IndexedDB/http_localhost_63993.indexeddb.leveldb since it was missing.
+2023/04/06-19:30:45.391 8107 Reusing MANIFEST /private/var/folders/5d/kwvt66_d5sz8hnqxyrhy_9z80000gn/T/flutter_tools.SnFxjL/flutter_tools_chrome_device.BXZEVp/Default/IndexedDB/http_localhost_63993.indexeddb.leveldb/MANIFEST-000001
+2023/04/06-19:30:45.412 9003 Level-0 table #5: started
+2023/04/06-19:30:45.414 9003 Level-0 table #5: 1222 bytes OK
+2023/04/06-19:30:45.420 9003 Delete type=0 #3
+2023/04/06-19:30:45.421 a203 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/06-19:44:05.343 1d03b Level-0 table #7: started
+2023/04/06-19:44:05.349 1d03b Level-0 table #7: 2057 bytes OK
+2023/04/06-19:44:05.355 1d03b Delete type=0 #4
+2023/04/06-19:44:05.355 a203 Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/06-19:48:33.373 a203 Compacting 1@1 + 1@2 files
+2023/04/06-19:48:33.378 a203 Generated table #8@1: 38 keys, 1144 bytes
+2023/04/06-19:48:33.378 a203 Compacted 1@1 + 1@2 files => 1144 bytes
+2023/04/06-19:48:33.382 a203 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/06-19:48:33.382 a203 Delete type=2 #7
+2023/04/06-19:48:33.382 a203 Delete type=2 #5
+2023/04/06-19:57:18.187 a65b Level-0 table #10: started
+2023/04/06-19:57:18.191 a65b Level-0 table #10: 6041 bytes OK
+2023/04/06-19:57:18.197 a65b Delete type=0 #6
+2023/04/06-19:57:18.197 a203 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/04/06-19:57:57.398 a203 Compacting 1@1 + 1@2 files
+2023/04/06-19:57:57.404 a203 Generated table #11@1: 40 keys, 2953 bytes
+2023/04/06-19:57:57.404 a203 Compacted 1@1 + 1@2 files => 2953 bytes
+2023/04/06-19:57:57.410 a203 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/04/06-19:57:57.410 a203 Delete type=2 #10
+2023/04/06-19:57:57.410 a203 Delete type=2 #8

@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sae_mobile/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sae_mobile/login_page.dart';
+import 'package:sae_mobile/signup_page.dart';
+import 'package:sae_mobile/welcome_page.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -12,9 +20,13 @@ class MyApp extends StatelessWidget {
       title: 'SAE Mobile',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: WelcomePage(), // Changez LoginPage() par WelcomePage()
+      routes: {
+        '/login': (context) => LoginPage(),
+        '/signup': (context) => SignUpPage(),
+      },
     );
   }
 }
+
