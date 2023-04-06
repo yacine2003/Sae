@@ -22,12 +22,7 @@ class HomePage extends StatelessWidget {
               child: Text("Voir les produits"),
             ),
             SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/login');
-              },
-              child: Text("Se connecter"),
-            ),
+
           ],
         ),
       ),

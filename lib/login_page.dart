@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sae_mobile/auth_service.dart';
+import 'package:sae_mobile/home_page.dart';
+
+import 'home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -17,7 +20,11 @@ class _LoginPageState extends State<LoginPage> {
       _formKey.currentState?.save();
       final userCredential = await _authService.signInWithEmailAndPassword(_email, _password);
       if (userCredential != null) {
-        Navigator.pop(context);
+        // Naviguez vers la page d'affichage des produits après une connexion réussie
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Erreur lors de la connexion")),
@@ -25,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
